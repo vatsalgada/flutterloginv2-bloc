@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'validators.dart';
+import 'package:rxdart/rxdart.dart';
 
 class Bloc with ValidationMixin {
   final _emailController = StreamController<String>();
