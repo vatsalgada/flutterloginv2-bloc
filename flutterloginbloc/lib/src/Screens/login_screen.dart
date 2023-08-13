@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../blocs/bloc.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -37,6 +38,13 @@ class LoginScreen extends StatelessWidget {
   }
 
   Widget submitButton() {
-    return ElevatedButton(child: Text('Login'), onPressed: () {});
+    return StreamBuilder(
+        stream: bloc.submitValid,
+        builder: (context, snapshot) {
+          return ElevatedButton(
+            child: Text('Login'),
+            onPressed: snapshot.hasData ? bloc.submit : null,
+          );
+        });
   }
 }
